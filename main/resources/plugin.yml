@@ -1,0 +1,4 @@
+name: Masa3Lobby
+version: ${project.version}
+main: masa3mc.masa3lobby.Masa3Lobby
+api-version: 1.16
