@@ -29,8 +29,7 @@ public class setItems {
         player.getInventory().setItem(1,item1);
         player.getInventory().setItem(7,item2);
     }
-
-    public void openGui(Player player){
+    public void openMenu(Player player){
         Inventory inv = Bukkit.createInventory(null,9,ChatColor.GOLD + "-Server Select-");
 
 

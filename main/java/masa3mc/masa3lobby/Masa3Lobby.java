@@ -35,12 +35,12 @@ public final class Masa3Lobby extends JavaPlugin {
             return;
         }
 
-        portal_yml.set("Gate.Minigame.min.X", 84);
-        portal_yml.set("Gate.Minigame.min.Y", 35);
-        portal_yml.set("Gate.Minigame.min.Z", -90);
-        portal_yml.set("Gate.Minigame.max.X", 104);
-        portal_yml.set("Gate.Minigame.max.Y", 60);
-        portal_yml.set("Gate.Minigame.max.Z", -90);
+        portal_yml.set("Gate.Athletic.min.X", 84);
+        portal_yml.set("Gate.Athletic.min.Y", 35);
+        portal_yml.set("Gate.Athletic.min.Z", -90);
+        portal_yml.set("Gate.Athletic.max.X", 104);
+        portal_yml.set("Gate.Athletic.max.Y", 60);
+        portal_yml.set("Gate.Athletic.max.Z", -90);
         //
         portal_yml.set("Gate.Creative.min.X", 49);
         portal_yml.set("Gate.Creative.min.Y", 35);
