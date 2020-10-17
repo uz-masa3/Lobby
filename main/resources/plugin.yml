@@ -1,4 +1,4 @@
 name: Masa3Lobby
-version: ${project.version}
+version: "はげたろうmodify"
 main: masa3mc.masa3lobby.Masa3Lobby
 api-version: 1.16

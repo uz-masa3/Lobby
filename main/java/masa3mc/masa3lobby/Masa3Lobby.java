@@ -1,5 +1,6 @@
 package masa3mc.masa3lobby;
 
+import masa3mc.masa3lobby.Listener.GateListener;
 import masa3mc.masa3lobby.Listener.Listeners;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -19,16 +20,17 @@ public final class Masa3Lobby extends JavaPlugin {
     public void onEnable() {
         instance = this;
         bungeecord = new BungeeCord();
+        saveDefaultConfig();
         createyml();
-        portal_yml = YamlConfiguration.loadConfiguration(new File(getDataFolder(),"portals.yml"));
-        Bukkit.getMessenger().registerOutgoingPluginChannel(this,"BungeeCord");
-        Bukkit.getMessenger().registerIncomingPluginChannel(this,"BungeeCord", (PluginMessageListener) bungeecord);
-        Bukkit.getPluginManager().registerEvents(new Listeners(),this);
+        portal_yml = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "portals.yml"));
+        Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        Bukkit.getPluginManager().registerEvents(new Listeners(), this);
+        Bukkit.getPluginManager().registerEvents(new GateListener(), this);
 
     }
 
     private void createyml() {
-        File file = new File(getDataFolder(),"portals.yml");
+        File file = new File(getDataFolder(), "portals.yml");
         portal_yml = YamlConfiguration.loadConfiguration(file);
 
         if (file.exists()) {
@@ -75,4 +77,9 @@ public final class Masa3Lobby extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+
+    public static BungeeCord bungeecord() {
+        return bungeecord;
+    }
+
 }

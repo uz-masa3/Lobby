@@ -12,12 +12,20 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 
 public class setItems {
-    public void setInv(Player player){
+
+    private static ItemStack creative = null;
+    private static ItemStack survival = null;
+    private static ItemStack pvp = null;
+    private static ItemStack athletic = null;
+
+    public static String serverselect_string = ChatColor.GOLD + "-ServerSelect-";
+
+    public static void setInv(Player player) {
         player.getInventory().clear();
 
         ItemStack item1 = new ItemStack(Material.CLOCK);
         ItemMeta meta1 = item1.getItemMeta();
-        meta1.setDisplayName(ChatColor.GOLD + "-ServerSelect-");
+        meta1.setDisplayName(serverselect_string);
         item1.setItemMeta(meta1);
 
         ItemStack item2 = new ItemStack(Material.FISHING_ROD);
@@ -26,54 +34,51 @@ public class setItems {
         meta2.setUnbreakable(true);
         meta2.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 
-        player.getInventory().setItem(1,item1);
-        player.getInventory().setItem(7,item2);
+        player.getInventory().setItem(1, item1);
+        player.getInventory().setItem(7, item2);
     }
-    public void openMenu(Player player){
-        Inventory inv = Bukkit.createInventory(null,9,ChatColor.GOLD + "-Server Select-");
 
-
-        ItemStack item1 = new ItemStack(Material.OAK_LOG);
-        ItemMeta meta1 = item1.getItemMeta();
-        meta1.setDisplayName(ChatColor.YELLOW + "Creative");
-        ArrayList<String> lore1 = new ArrayList<String>();
-        lore1.add(ChatColor.RED + "ver 1.16.*");
+    public static void openMenu(Player player) {
+        Inventory inv = Bukkit.createInventory(null, 9, serverselect_string);
+        creative = new ItemStack(Material.OAK_LOG);
+        ItemMeta creative_meta = creative.getItemMeta();
+        creative_meta.setDisplayName(ChatColor.YELLOW + "Creative");
+        ArrayList<String> creative_lore = new ArrayList<String>();
+        creative_lore.add(ChatColor.RED + "ver 1.16.*");
         //lore1.add("§fメンテナンス中...");
-        meta1.setLore(lore1);
-        item1.setItemMeta(meta1);
-        inv.setItem(1, item1);
+        creative_meta.setLore(creative_lore);
+        creative.setItemMeta(creative_meta);
+
+        survival = new ItemStack(Material.GRASS_BLOCK);
+        ItemMeta survival_meta = survival.getItemMeta();
+        survival_meta.setDisplayName(ChatColor.GREEN + "Survival");
+        ArrayList<String> survival_lore = new ArrayList<String>();
+        survival_lore.add(ChatColor.RED + "ver 1.16.3");
+        survival_meta.setLore(survival_lore);
+        survival.setItemMeta(survival_meta);
+
+        athletic = new ItemStack(Material.FEATHER);
+        ItemMeta athletic_meta = athletic.getItemMeta();
+        athletic_meta.setDisplayName(ChatColor.AQUA + "Athletic");
+        ArrayList<String> athletic_lore = new ArrayList<String>();
+        athletic_lore.add(ChatColor.RED + "ver 1.12.2");
+        athletic_meta.setLore(athletic_lore);
+        athletic.setItemMeta(athletic_meta);
+
+        pvp = new ItemStack(Material.IRON_SWORD);
+        ItemMeta pvp_meta = pvp.getItemMeta();
+        pvp_meta.setDisplayName(ChatColor.DARK_RED + "PvP");
+        ArrayList<String> pvp_lore = new ArrayList<String>();
+        pvp_lore.add(ChatColor.RED + "ver 1.8~1.16.3");
+        pvp_lore.add("§f1.8.8で入ることを推奨します。");
+        pvp_meta.setLore(pvp_lore);
+        pvp.setItemMeta(pvp_meta);
 
 
-        ItemStack item2 = new ItemStack(Material.GRASS_BLOCK);
-        ItemMeta meta2 = item2.getItemMeta();
-        meta2.setDisplayName(ChatColor.GREEN + "Survival");
-        ArrayList<String> lore2 = new ArrayList<String>();
-        lore2.add(ChatColor.RED + "ver 1.16.3");
-        meta2.setLore(lore2);
-        item2.setItemMeta(meta2);
-        inv.setItem(3, item2);
-
-
-        ItemStack item3 = new ItemStack(Material.FEATHER);
-        ItemMeta meta3 = item3.getItemMeta();
-        meta3.setDisplayName(ChatColor.AQUA + "Athletic");
-        ArrayList<String> lore3 = new ArrayList<String>();
-        lore3.add(ChatColor.RED + "ver 1.12.2");
-        meta3.setLore(lore3);
-        item3.setItemMeta(meta3);
-        inv.setItem(5, item3);
-
-
-        ItemStack item4 = new ItemStack(Material.IRON_SWORD);
-        ItemMeta meta4 = item4.getItemMeta();
-        meta4.setDisplayName(ChatColor.DARK_RED + "PvP");
-        ArrayList<String> lore4 = new ArrayList<String>();
-        lore4.add(ChatColor.RED + "ver 1.8~1.16.3");
-        lore4.add("§f1.8.8で入ることを推奨します。");
-        meta4.setLore(lore4);
-        item4.setItemMeta(meta4);
-        inv.setItem(7, item4);
-
+        inv.setItem(1, creative);
+        inv.setItem(3, survival);
+        inv.setItem(5, athletic);
+        inv.setItem(7, pvp);
         player.openInventory(inv);
     }
 }
