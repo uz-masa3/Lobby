@@ -20,7 +20,6 @@ public final class Masa3Lobby extends JavaPlugin {
     public void onEnable() {
         instance = this;
         bungeecord = new BungeeCord();
-        saveDefaultConfig();
         createyml();
         portal_yml = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "portals.yml"));
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
